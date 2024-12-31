@@ -8,7 +8,7 @@ export default function App() {
 
   // 文本内容
   const texts = [
-    "你好啊，哈哈哈！",
+    "你好啊，哈哈哈！如果你能看到这个网页说明我的运气不差！",
     "这是用Chatgpt制作的啦。",
     "当然是祝你新年快乐了。",
     "后面有三个问题，可以拜托您至少回答一个吗！",
@@ -16,9 +16,9 @@ export default function App() {
 
   // 填空题
   const questions = [
-    "存在和虚无的关系是怎样的(不做填0)：",
-    "猜猜我是谁(不做填0)：",
-    "可以也祝我新年快乐吗(不做填0)：",
+    "如何看待叙利亚的局势(可以不填)：",
+    "猜猜我是谁(可以不填)：",
+    "可以也祝我新年快乐吗(能不能不要不填)：",
   ];
 
   // 切换到下一段文本或填空题阶段
@@ -39,9 +39,9 @@ export default function App() {
 
   // 提交答案
   const handleSubmit = async () => {
-    // 验证答案是否填写完整
-    if (answers.some((answer) => answer.trim() === "")) {
-      setError("所有填空题不能为空，请检查后再提交！");
+    // 验证第三个问题是否填写
+    if (answers[2].trim() === "") {
+      setError("能不能再考虑一下.....");
       return;
     }
 
@@ -58,7 +58,7 @@ export default function App() {
       });
 
       if (response.ok) {
-        alert("感谢参与！");
+        alert("感谢您的回答！");
         setAnswers(["", "", ""]); // 清空填空答案
         setCurrentStep(2); // 切换到完成阶段
       } else {
@@ -108,8 +108,8 @@ export default function App() {
       {currentStep === 2 && (
         // 完成阶段
         <div>
-          <h1 style={styles.heading}>晚安！</h1>
-          <p style={styles.text}>睡个好觉吧！</p>
+          <h1 style={styles.heading}>吼吼吼！</h1>
+          <p style={styles.text}>祝生活顺利，前程似锦！</p>
         </div>
       )}
     </div>
