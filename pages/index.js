@@ -8,17 +8,17 @@ export default function App() {
 
   // 文本内容
   const texts = [
-    "欢迎来到这个页面！",
-    "这是一个动态文本和填空题的演示。",
-    "请按照提示完成后续的填空题。",
-    "点击“下一条”查看填空题。",
+    "你好啊，哈哈哈！",
+    "这是用Chatgpt制作的啦。",
+    "当然是祝你新年快乐了。",
+    "后面有三个问题，可以拜托您至少回答一个吗！",
   ];
 
   // 填空题
   const questions = [
-    "请填写你的名字：",
-    "请填写你的年龄：",
-    "请填写你的职业：",
+    "存在和虚无的关系是怎样的(不做填0)：",
+    "猜猜我是谁(不做填0)：",
+    "可以也祝我新年快乐吗(不做填0)：",
   ];
 
   // 切换到下一段文本或填空题阶段
@@ -58,11 +58,11 @@ export default function App() {
       });
 
       if (response.ok) {
-        alert("答案已成功提交！");
+        alert("感谢参与！");
         setAnswers(["", "", ""]); // 清空填空答案
         setCurrentStep(2); // 切换到完成阶段
       } else {
-        alert("提交失败，请稍后再试！");
+        alert("坏了，网络不好可以再重试一下吗？");
       }
     } catch (error) {
       console.error("提交答案时出错:", error);
@@ -77,7 +77,7 @@ export default function App() {
         <div>
           <p style={styles.text}>{texts[textIndex]}</p>
           <button onClick={handleNextText} style={styles.button}>
-            {textIndex < texts.length - 1 ? "下一条" : "进入填空题"}
+            {textIndex < texts.length - 1 ? "下一句" : "进入填空题"}
           </button>
         </div>
       )}
@@ -100,7 +100,7 @@ export default function App() {
           ))}
           {error && <p style={styles.error}>{error}</p>}
           <button onClick={handleSubmit} style={styles.button}>
-            提交答案
+            好的就这样
           </button>
         </div>
       )}
@@ -108,8 +108,8 @@ export default function App() {
       {currentStep === 2 && (
         // 完成阶段
         <div>
-          <h1 style={styles.heading}>感谢你的参与！</h1>
-          <p style={styles.text}>你的答案已经成功提交。</p>
+          <h1 style={styles.heading}>晚安！</h1>
+          <p style={styles.text}>睡个好觉吧！</p>
         </div>
       )}
     </div>
